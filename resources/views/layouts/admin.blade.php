@@ -166,7 +166,7 @@
                 <div data-simplebar class="h-100">
 
                     <!-- User details -->
-                    
+                    cd
                     <!--- Sidemenu -->
                     <div id="sidebar-menu">
                         <!-- Left Menu Start -->
@@ -396,9 +396,9 @@
         <script src="{{ asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
         <script src="{{ asset('assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js')}}"></script>
 
-        <!-- Required datatable js -->
+        {{-- <!-- Required datatable js -->
         <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-        <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script> --}}
         
         <script src="{{ asset('assets/js/pages/dashboard.init.js')}}"></script>
 
