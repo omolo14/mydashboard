@@ -6,7 +6,7 @@
 <head>
         
         <meta charset="utf-8" />
-        <title>MY ADMIN DASHBOARD</title>
+        <title>Budget Management System</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
@@ -166,41 +166,63 @@
                 <div data-simplebar class="h-100">
 
                     <!-- User details -->
-                    
                     <!--- Sidemenu -->
                     <div id="sidebar-menu">
                         <!-- Left Menu Start -->
                         <ul class="metismenu list-unstyled" id="side-menu">
+                            @auth
+                                <!-- Role-based menu items for admin -->
+                                @if(auth()->user()->role_as == '1')
+                                    <li class="menu-title">Admin Pages</li>
+                                    <li>
+                                        <a href="{{ route('admin.dashboard') }}" class="waves-effect">
+                                            <i class="ri-dashboard-line"></i>
+                                            <span>Admin Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                            <i class="ri-account-circle-line"></i>
+                                            <span>User Management</span>
+                                        </a>
+                                        <ul class="sub-menu" aria-expanded="false">
+                                            {{-- <li><a href="{{ route('admin.users') }}">Administrators</a></li> --}}
+                                            <li><a href="{{ route('admin.users') }}">Users</a></li>
+                                        
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                            <i class="ri-account-circle-line"></i>
+                                            <span>Project Management</span>
+                                        </a>
+                                        <ul class="sub-menu" aria-expanded="false">
+                                            {{-- <li><a href="{{ route('admin.users') }}">Administrators</a></li> --}}
+                                            <li><a href="{{ route('projects.index') }}">Projects</a></li>
+                                            <li><a href="{{ route('tasks.index') }}">Tasks</a></li>
+                                        </ul>
+                                    </li> 
+                                @endif
+                            @endauth
                             <li class="menu-title">Menu</li>
-
+                            
                             <li>
-                                <a href="{{ route('layouts.admin') }}" class="waves-effect">
+                                <a href="{{ route('auth.dashboard') }}" class="waves-effect">
                                     <i class="ri-dashboard-line"></i>
                                     <span>Dashboard</span>
                                 </a>
                             </li>   
 
                             <li class="menu-title">Pages</li>
+
+                           
                             <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-account-circle-line"></i>
-                                    <span>User Management</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    {{-- <li><a href="{{ route('admin.users') }}">Administrators</a></li> --}}
-                                    <li><a href="{{ route('admin.users') }}">Users</a></li>
-                                   
-                                </ul>
-                            </li>
-                            {{-- <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-table-2"></i>
+                                <a href="{{ route('tables.index') }}" class="waves-effect">
+                                    <i class="ri-dashboard-line"></i>
                                     <span>Tables</span>
                                 </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{ route('tables.index') }}">Data Tables</a></li>
-                                </ul>
-                            </li> --}}
+                            </li>
+                            
                         </ul>
                     </div>
                     <!-- Sidebar -->
@@ -260,6 +282,7 @@
 
         <!-- Datatable init js -->
         <script src="{{ asset('assets/js/pages/datatables.init.js')}}"></script>
+        
 
         <!-- apexcharts -->
         <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js')}}"></script>
@@ -289,7 +312,67 @@
 
         <script src="{{ asset('assets/js/pages/form-element.init.js')}}"></script>
 
-       
+        {{-- Sweet alert js --}}
+        <script src="{{ asset('assets/js/pages/sweet-alerts.init.js')}}"></script>
+        <script>
+            // @if(session('error'))
+            //     <div class="alert alert-danger">
+            //         {{ session('error') }}
+            //     </div>
+            // @endif
+
+            @if(session('success'))
+                swal({
+                    title: '{{ session('success') }}',
+                    icon: '{{ session('successcode') }}',
+                    button: "OK",
+                });
+            @endif
+        </script>
+
+        <script>
+            document.getElementById('exportBudgetsButton').addEventListener('click', function() {
+                // Get the table content for Budgets
+                const table = document.querySelectorAll('.table-responsive')[0].querySelector('table');
+                const tableContent = table.outerHTML;
+
+                // Create a Blob containing the table content
+                const blob = new Blob([tableContent], { type: 'text/html' });
+
+                // Create a URL for the Blob
+                const url = URL.createObjectURL(blob);
+
+                // Create a temporary anchor element to trigger the download
+                const downloadLink = document.createElement('a');
+                downloadLink.href = url;
+                downloadLink.download = 'budgets_report.html'; // Change the filename if you want a different extension
+                downloadLink.click();
+
+                // Clean up by revoking the URL
+                URL.revokeObjectURL(url);
+            });
+
+            document.getElementById('exportExpensesButton').addEventListener('click', function() {
+                // Get the table content for Expenses
+                const table = document.querySelectorAll('.table-responsive')[1].querySelector('table');
+                const tableContent = table.outerHTML;
+
+                // Create a Blob containing the table content
+                const blob = new Blob([tableContent], { type: 'text/html' });
+
+                // Create a URL for the Blob
+                const url = URL.createObjectURL(blob);
+
+                // Create a temporary anchor element to trigger the download
+                const downloadLink = document.createElement('a');
+                downloadLink.href = url;
+                downloadLink.download = 'expenses_report.html'; // Change the filename if you want a different extension
+                downloadLink.click();
+
+                // Clean up by revoking the URL
+                URL.revokeObjectURL(url);
+            });
+        </script>
 
     </body>
 

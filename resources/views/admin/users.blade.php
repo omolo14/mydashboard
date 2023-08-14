@@ -29,14 +29,13 @@
                     <div class="card">
                         <div class="card-body">
                             <h4>Administrators</h4>
-                            <a class="btn btn-primary mb-3" href="{{ route('admin.addAdministrator') }}">Add New Administrator</a>
+                            <a class="btn btn-primary mb-3" href="{{ route('admin.createadmin') }}">Add New Administrator</a>
                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Password</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -46,7 +45,6 @@
                                             <td>{{ $index +=1}}</td>
                                             <td>{{ $administrator->name }}</td>
                                             <td>{{ $administrator->email }}</td>
-                                            <td>{{ $administrator->password }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="">View</a>
                                                 <a class="btn btn-secondary upcube-btn" href="">Edit</a>
@@ -63,14 +61,13 @@
                             <br>
                             <!-- Display Users -->
                             <h4>Users</h4>
-                            <a class="btn btn-primary mb-3" href="{{ route('admin.addUser') }}">Add New User </a>
+                            <a class="btn btn-primary mb-3" href="{{ route('admin.createuser') }}">Add New User </a>
                             <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Password</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -80,7 +77,6 @@
                                             <td>{{ $index +=1}}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->password }}</td>
                                             <td>
                                                 <a class="btn btn-primary upcube-btn" href="">View</a>
                                                 <a class="btn btn-secondary upcube-btn" href="">Edit</a>
