@@ -1,142 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-    
-<!-- Mirrored from themesdesign.in/upcube/layouts/auth-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Feb 2023 16:22:01 GMT -->
 <head>
-        
-        <meta charset="utf-8" />
-        <title>Register</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesdesign" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-        <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
-        <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <!-- App Css-->
-        <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-
-    </head>
-
-    <body class="auth-body-bg">
-        <div class="bg-overlay"></div>
-        <div class="wrapper-page">
-            <div class="container-fluid p-0">
-                <div class="card">
-                    <div class="card-body">
-    
-                        <div class="text-center mt-4">
-                            <div class="mb-3">
-                                <a href="index-2.html" class="auth-logo">
-                                    <img src="assets/images/logo-dark.png" height="30" class="logo-dark mx-auto" alt="">
-                                    <img src="assets/images/logo-light.png" height="30" class="logo-light mx-auto" alt="">
-                                </a>
-                            </div>
-                        </div>
-    
-                        <h4 class="text-muted text-center font-size-18"><b>Register</b></h4>
-    
-                        <div class="p-3">
-                            <form class="form-horizontal mt-3" method="POST" action="{{ route('register') }}">
-                                @csrf
-                                
-
-                                <div class="row mb-3">
-                                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-        
-                                    <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-        
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-        
-                                    <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-        
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-    
-                                
-
-                                <div class="row mb-3">
-                                    <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-        
-                                    <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-        
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-    
-                                
-
-                                <div class="row mb-3">
-                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-        
-                                    <div class="col-md-6">
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                    </div>
-                                </div>
-        
-                                <div class="row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Register') }}
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="form-group mb-0 row mt-2"> 
-                                    <div class="col-sm-5 mt-3">
-                                        <a href="{{ route('login') }}" class="text-muted"><i class="mdi mdi-account-circle"></i> Log in</a>
-                                    </div>
-                                </div>
-    
-                                
-                            </form>
-                            <!-- end form -->
-                        </div>
-                    </div>
-                    <!-- end cardbody -->
-                </div>
-                <!-- end card -->
-            </div>
-            <!-- end container -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ asset('assets/css/styles 2.css') }}">
+    <title>Registration</title>
+</head>
+<body style="background: url('{{ asset('assets/images/1.jpg') }}'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+ <div class="wrapper">
+    <nav class="nav">
+        <div class="nav-logo">
+            <p>LOGO .</p>
         </div>
-        <!-- end -->
-        
+        {{-- <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="{{ route('welcome') }}" class="link active">Home</a></li>
+            </ul>
+        </div> --}}
+    </nav>
+    <div class="form-box">
+        <div class="register-container" id="register">
+            <div class="top">
+                <span>Don't have an account? <a href="{{ route('register') }}">Sign Up</a></span>
+                    <header>Login</header>
+                <span>Have an account? <a href="{{ route('login') }}">Login</a></span>
+                <header>Sign Up</header>
+            </div>
+            <form class="form-horizontal mt-3" method="POST" action="{{ route('register') }}">
+                @csrf
 
-        <!-- JAVASCRIPT -->
-        <script src="assets/libs/jquery/jquery.min.js"></script>
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
+                
+                <div class="input-box">
+                    <input id="name" type="text" class="input-field @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Name">
+                    <i class="bx bx-user"></i>
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="input-box">
+                    <input id="email" type="email" class="input-field @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+                    <i class="bx bx-envelope"></i>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                
 
-        <script src="assets/js/app.js"></script>
+                <div class="input-box">
+                    <input id="password" type="password" class="input-field @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+                    <i class="bx bx-lock-alt"></i>
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
 
-    </body>
+                <div class="input-box">
+                    <input id="password-confirm" type="password" class="input-field" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
+                    <i class="bx bx-lock-alt"></i>
+                </div>
 
-<!-- Mirrored from themesdesign.in/upcube/layouts/auth-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Feb 2023 16:22:01 GMT -->
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Register">
+                </div>
+
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" id="register-check">
+                        <label for="register-check"> Remember Me</label>
+                    </div>
+                    <div class="two">
+                        <label><a href="#">Terms & conditions</a></label>
+                    </div>
+                </div>
+
+                <div class="form-group mb-0 row mt-2"> 
+                    <div class="col-sm-5 mt-3">
+                        <a href="{{ route('login') }}" class="text-muted"><i class="mdi mdi-account-circle"></i> Log in</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>   
+
+
+
+
+
+</body>
 </html>
