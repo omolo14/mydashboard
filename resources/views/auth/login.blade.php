@@ -12,7 +12,7 @@
     <div class="wrapper">
        <nav class="nav">
            <div class="nav-logo">
-               <p>LOGO .</p>
+               <p>Log In.</p>
            </div>
            {{-- <div class="nav-menu" id="navMenu">
                <ul>
@@ -26,7 +26,7 @@
             <div class="login-container" id="login">    
                 <div class="top">
                     <span>Don't have an account? <a href="{{ route('register') }}">Sign Up</a></span>
-                    <header>Login</header>
+                    {{-- <header>Login</header> --}}
                 </div>
                 <form class="form-horizontal mt-3" method="POST" action="{{ route('login') }}">
                 @csrf
