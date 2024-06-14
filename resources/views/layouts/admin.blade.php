@@ -172,7 +172,7 @@
                         <ul class="metismenu list-unstyled" id="side-menu">
                             @auth
                                 <!-- Role-based menu items for admin -->
-                                @if(auth()->user()->role_as == '1')
+                                @if(auth()->user()->role == '1')
                                     <li class="menu-title">Admin Pages</li>
                                     <li>
                                         <a href="{{ route('admin.dashboard') }}" class="waves-effect">
@@ -191,17 +191,7 @@
                                         
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                            <i class="ri-account-circle-line"></i>
-                                            <span>Project Management</span>
-                                        </a>
-                                        <ul class="sub-menu" aria-expanded="false">
-                                            {{-- <li><a href="{{ route('admin.users') }}">Administrators</a></li> --}}
-                                            <li><a href="{{ route('projects.index') }}">Projects</a></li>
-                                            <li><a href="{{ route('tasks.index') }}">Tasks</a></li>
-                                        </ul>
-                                    </li> 
+                                    
                                 @endif
                             @endauth
                             <li class="menu-title">Menu</li>

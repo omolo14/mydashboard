@@ -10,14 +10,27 @@
                         <div class="card-body">
                             <h4 class="card-title">Add New User</h4>
 
-                            <form method="POST" action="{{ route('admin.createuser') }}">
+                            <form method="POST" action="{{ route('admin.createuser') }}" enctype="multipart/form-data">
                                 @csrf
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Role</label>
+                                    <div class="col-sm-10">
+                                        <select name="role" id="role" class="form-select" aria-label="Role" required>
+                                            <option selected disabled>Select Role</option>
+                                            <option value="0">User</option>
+                                            <option value="1">Admin</option>
+                                        </select>
+                                    </div>
+                                </div>
+                             
+                             
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="text" name="name" id="name" required value="{{ old('name') }}">
                                     </div>
                                 </div>
+                            
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">E-Mail Address</label>
                                     <div class="col-sm-10">
@@ -36,6 +49,8 @@
                                         <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" required>
                                     </div>
                                 </div>
+                                
+                                
                                 @error('password')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -60,3 +75,6 @@
     </div>
 </div>
 @endsection
+
+
+

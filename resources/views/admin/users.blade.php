@@ -23,20 +23,20 @@
             </div>
 
             {{-- <a class="btn btn-primary mb-3" href="{{ route('admin.addUser') }}">Add User </a> --}}
-
+            <a class="btn btn-primary mb-3" href="{{ route('admin.createuser') }}">Add New User </a>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <h4>Administrators</h4>
-                            <a class="btn btn-primary mb-3" href="{{ route('admin.createadmin') }}">Add New Administrator</a>
                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Actions</th>
+                                        <th>Phone Number</th>
+                                        {{-- <th>Actions</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,30 +45,30 @@
                                             <td>{{ $index +=1}}</td>
                                             <td>{{ $administrator->name }}</td>
                                             <td>{{ $administrator->email }}</td>
-                                            <td>
-                                                <a class="btn btn-primary upcube-btn" href="">View</a>
-                                                <a class="btn btn-secondary upcube-btn" href="">Edit</a>
+                                            {{-- <td>
+                                                <a class="btn btn-primary upcube-btn" href="{{ route('home', $administrator->id ) }}">View</a>
+                                                <a class="btn btn-secondary upcube-btn" href="{{ route('home', $administrator->id ) }}">Edit</a>
                                                 <form action="" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger upcube-btn">Delete</button>
                                                 </form>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+
                             <br>
                             <!-- Display Users -->
                             <h4>Users</h4>
-                            <a class="btn btn-primary mb-3" href="{{ route('admin.createuser') }}">Add New User </a>
                             <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Actions</th>
+                                        {{-- <th>Actions</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,7 +77,7 @@
                                             <td>{{ $index +=1}}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>
+                                            {{-- <td>
                                                 <a class="btn btn-primary upcube-btn" href="">View</a>
                                                 <a class="btn btn-secondary upcube-btn" href="">Edit</a>
                                                 <form action="" method="POST" class="d-inline">
@@ -85,7 +85,7 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger upcube-btn">Delete</button>
                                                 </form>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
